@@ -1,38 +1,43 @@
  const FetchCC = require("../libs/fetchLocationCountryCode");
  const Fetchcurrentweatherapi = require("../libs/getCurrentWeatherAndForecastApi");
+ //const Fetchcurrentweatherfivedayforecastapi = require("../libs/getCurrentWeatherFiveDayForecastApi");
+ //const Fetchhistroicalapi = require("../libs/getHistroicalApi");
 
- let ans1 = "heello";
- let ans2 = "heello2";
- // let results = [ans1, ans2];
  let locationCountryCode = [];
+ let CityAndCode;
 
-
-
- class PhotoController {
+ class WeatherApiController {
 
 
      /**
-      * this function get photos from requested data
+      * this function get 
       * @method search
       * @param {String} req - req.body.name string
       * @param {String} res -  string
-      * @return {Promise} return JSON Object OF Photos
+      * @return {Promise} return JSON Object OF
       */
 
      static getCurrentWeatherAndForecast(req, res) {
 
          FetchCC.FetchCityAndCCData(req.body.location)
              .then(result => {
-                 //console.log(result);
-                 locationCountryCode = result;
-                 //console.log(locationCountryCode);
+                 CityAndCode = result;
                  //result = [lat,long] - from node.Geocoder
                  //returns result and pass as arguements in next function
                  return Fetchcurrentweatherapi.getCurrentWeather(result)
              })
              .then(result => {
+                 locationCountryCode.push(result);
+                 console.log(locationCountryCode);
+                 //console.log("currentWeather Object" + result[0]);
+                 //locationCountryCode.push(result);
+                 //Fetchcurrentweatherfivedayforecastapi.getCurrentWeatherFiveDayForecastApi(CityAndCode)
+             })
+             .then(result => {
+                 //locationCountryCode.push(result);
                  // turn the result into a json Object
                  res.status(200).send({
+                     //result : locationCountryCode
                      //key: result   -   value: API JSON Object 
                      result: result
                  })
@@ -52,6 +57,19 @@
          //         })
          // }
      }
+
+     /**
+      * this function get 
+      * @method search
+      * @param {String} req - req.body.name string
+      * @param {String} res -  string
+      * @return {Promise} return JSON Object OF
+      */
+     /*static getHistoricalInfo(req, res) { 
+     }*/
+
+     /*static get(req, res) { 
+     }*/
  }
 
- module.exports = PhotoController;
+ module.exports = WeatherApiController;

@@ -21,8 +21,8 @@ $(() => {
     })
 
     //
-    function initMap(data) {
-        console.log(data);
+    // function initMap(data) {
+    //     console.log(data);
 
-    }
+    // }
 });
