@@ -1,9 +1,10 @@
  const FetchCC = require("../libs/fetchLocationCountryCode");
- const Fetchcurrentweatherapi = require("../libs/getCurrentWeatherAndForecastApi");
- //const Fetchcurrentweatherfivedayforecastapi = require("../libs/getCurrentWeatherFiveDayForecastApi");
+ const Fetchcurrentweatherapi = require("../libs/getCurrentWeatherApi");
+ const Fetchcurrentweatherfivedayforecastapi = require("../libs/getCurrentWeatherFiveDayForecastApi");
  //const Fetchhistroicalapi = require("../libs/getHistroicalApi");
 
  let locationCountryCode = [];
+ let currentWeatherApiResult;
  let CityAndCode;
 
  class WeatherApiController {
@@ -18,20 +19,23 @@
       */
 
      static getCurrentWeatherAndForecast(req, res) {
-
+         //result = [lat,long] - from node.Geocoder
+         //returns result and pass as arguements in next function
          FetchCC.FetchCityAndCCData(req.body.location)
              .then(result => {
                  CityAndCode = result;
-                 //result = [lat,long] - from node.Geocoder
-                 //returns result and pass as arguements in next function
                  return Fetchcurrentweatherapi.getCurrentWeather(result)
              })
              .then(result => {
-                 locationCountryCode.push(result);
-                 console.log(locationCountryCode);
+                 currentWeatherApiResult = result;
+                 // console.log(currentWeatherApiResult);
+                 //locationCountryCode.push(result);
+                 // console.log('locationCountryCode' + locationCountryCode);
+                 //console.log(locationCountryCode);
                  //console.log("currentWeather Object" + result[0]);
                  //locationCountryCode.push(result);
-                 //Fetchcurrentweatherfivedayforecastapi.getCurrentWeatherFiveDayForecastApi(CityAndCode)
+                 // console.log(CityAndCode);
+                 Fetchcurrentweatherfivedayforecastapi.getCurrentWeatherFiveDayForecastApi(CityAndCode)
              })
              .then(result => {
                  //locationCountryCode.push(result);
@@ -72,4 +76,4 @@
      }*/
  }
 
- module.exports = WeatherApiController;
+ module.exports = WeatherApiController;;

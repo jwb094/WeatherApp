@@ -1,29 +1,32 @@
 const rest = require('restler');
-const currentWeatherForecastModel = require("../models/currentWeatherForecastFiveDayModel");
+const currentWeatherForecastModel = require("../models/currentWeatherFiveDayModel");
 
 class FetchCurrentWeatherForecastApiData {
 
-    static getCurrentWeatherForecast(result) {
+    static getCurrentWeatherFiveDayForecastApi(result) {
+        //console.log('getCurrentWeatherFiveDayForecastApi' + result);
         return new Promise(
             (resolve, reject) => {
                 //Calls the Api
-                rest.get(`http://api.openweathermap.org/data/2.5/forecast?q=${result[0]},${result[1]}&APPID=7e3951b4f189a6c133b64aaf9abf7728`).on('complete', function(weatherResult) {
-                    //console.log(weatherResult);
-                    if (weatherResult instanceof Error) {
-                        reject(weatherResult);
+                rest.get(`http://api.openweathermap.org/data/2.5/forecast?q=${result[0]},${result[1]}&APPID=7e3951b4f189a6c133b64aaf9abf7728&units=metric`).on('complete', function(weatherForecastResult) {
+                    // console.log('5daysForecast');
+                    //console.log(weatherForecastResult.list[0].main);
+                    // console.log(weatherForecastResult.list[0].weather);
+                    // console.log(weatherForecastResult.list[0].wind);
+                    // console.log(weatherForecastResult.city.name);
+                    if (weatherForecastResult instanceof Error) {
+                        reject(weatherForecastResult);
                     } else {
-
                         let WeatherArray = [];
-
-                        for (var key in object) {
-
-
+                        let arrayForWeatherFiveDayForecast = weatherForecastResult.list[0];
+                        console.log('arrayForWeatherFiveDayForecast' + arrayForWeatherFiveDayForecast.main);
+                        for (let i in arrayForWeatherFiveDayForecast) {
                             try {
-                                let currentweatherdetails = new currentWeatherForecastModel(weatherResult);
-                                console.log(currentweatherdetails);
-
+                                console.log(arrayForWeatherFiveDayForecast[i]);
+                                let currentweatherdetails = new currentWeatherForecastModel(arrayForWeatherFiveDayForecast[i]);
+                                // console.log(currentweatherdetails);
                                 WeatherArray.push(currentweatherdetails);
-                                //console.log("Hello " + currentWeatherArray);
+                                //console.log("Hello " + WeatherArray);
                             } catch (e) {}
 
                             //take parameter back to promise chain
