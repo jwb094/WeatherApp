@@ -1,3 +1,48 @@
 body {
-    background-color: rgba(214, 26, 0, 0.96);
+    background-color: #3385ff;
+    margin: 0;
+    padding: 0;
+    border: 0;
 }
+
+.container {
+    margin-top: 30px;
+}
+
+#weather,
+#forecast {
+    height: 400px;
+    width: auto;
+    border: 2px solid black;
+}
+
+.clearfix {
+    clear: both;
+    height: 10%;
+}
+
+#currentweatherdetails {
+    text-align: center;
+    list-style-type: none;
+}
+
+#Location {
+    text-align: center;
+}
+
+
+/* .left {#weatherdescription
+    float: left;
+    text-align: center;
+    border: 2px solid black;
+    width: 45%;
+    height: 380px;
+}
+
+.right {
+    float: right;
+    text-align: center;
+    border: 2px solid white;
+    width: 45%;
+    height: 380px;
+} */

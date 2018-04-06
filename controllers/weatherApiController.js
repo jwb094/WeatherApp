@@ -3,8 +3,8 @@
  const Fetchcurrentweatherfivedayforecastapi = require("../libs/getCurrentWeatherFiveDayForecastApi");
  //const Fetchhistroicalapi = require("../libs/getHistroicalApi");
 
- let locationCountryCode = [];
- let currentWeatherApiResult;
+ let currentWeatherAndFiveDayForecast = [];
+ let currentWeatherApiResult = [];
  let CityAndCode;
 
  class WeatherApiController {
@@ -27,39 +27,18 @@
                  return Fetchcurrentweatherapi.getCurrentWeather(result)
              })
              .then(result => {
-                 currentWeatherApiResult = result;
-                 // console.log(currentWeatherApiResult);
-                 //locationCountryCode.push(result);
-                 // console.log('locationCountryCode' + locationCountryCode);
-                 //console.log(locationCountryCode);
-                 //console.log("currentWeather Object" + result[0]);
-                 //locationCountryCode.push(result);
-                 // console.log(CityAndCode);
-                 Fetchcurrentweatherfivedayforecastapi.getCurrentWeatherFiveDayForecastApi(CityAndCode)
+                 currentWeatherAndFiveDayForecast.push(result);
+                 return Fetchcurrentweatherfivedayforecastapi.getCurrentWeatherFiveDayForecastApi(CityAndCode)
              })
              .then(result => {
-                 //locationCountryCode.push(result);
-                 // turn the result into a json Object
+                 currentWeatherAndFiveDayForecast.push(result);
                  res.status(200).send({
-                     //result : locationCountryCode
-                     //key: result   -   value: API JSON Object 
-                     result: result
+                     result: currentWeatherAndFiveDayForecast
                  })
              })
              .catch(err => {
                  res.status(400).send(err);
              })
-
-         //     currentweatherapi.getCurrentWeather(req.body.location)
-         //         .then(result => {
-         //             res.status(200).send({
-         //                 result: result
-         //             });
-         //         })
-         //         .catch(err => {
-         //             res.status(400).send(err);
-         //         })
-         // }
      }
 
      /**
