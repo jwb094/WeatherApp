@@ -9,5 +9,6 @@ const weatherApiCallsController = require('../controllers/weatherApiController')
 // call method weatherApiCallsController.getCurrentWeatherAndForecast to  get current weather and forecast
 router.post("/weather/:location", weatherApiCallsController.getCurrentWeatherAndForecast)
 
-
+// call method airportDetailController.ge
+router.post("/historical/:location", weatherApiCallsController.getHistoricalInfo);
 module.exports = router;

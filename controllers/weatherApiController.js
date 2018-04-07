@@ -48,8 +48,9 @@
       * @param {String} res -  string
       * @return {Promise} return JSON Object OF
       */
-     /*static getHistoricalInfo(req, res) { 
-     }*/
+     static getHistoricalInfo(req, res) {
+         //FetchHd.fetchHistoricalData(req.body.location)
+     }
 
      /*static get(req, res) { 
      }*/
