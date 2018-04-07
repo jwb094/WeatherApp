@@ -3,17 +3,11 @@ body {
     margin: 0;
     padding: 0;
     border: 0;
+    font-family: 'Quicksand', sans-serif;
 }
 
 .container {
     margin-top: 30px;
-}
-
-#weather,
-#forecast {
-    height: 400px;
-    width: auto;
-    border: 2px solid black;
 }
 
 .clearfix {
@@ -21,28 +15,37 @@ body {
     height: 10%;
 }
 
-#currentweatherdetails {
-    text-align: center;
-    list-style-type: none;
+#weather,
+#forecast {
+    height: 400px;
+    width: auto;
+    /* border: 2px solid black; */
 }
 
 #Location {
     text-align: center;
 }
 
-
-/* .left {#weatherdescription
-    float: left;
+#currentweatherdetails {
     text-align: center;
-    border: 2px solid black;
-    width: 45%;
-    height: 380px;
+    list-style-type: none;
+    font-size: 10px;
 }
 
-.right {
-    float: right;
+.title {
     text-align: center;
-    border: 2px solid white;
-    width: 45%;
-    height: 380px;
-} */
+}
+
+.forecastdetails {
+    display: flex;
+    text-align: center;
+}
+
+.box1,
+.box2,
+.box3,
+.box4,
+.box5 {
+    width: 300px;
+    height: auto;
+}

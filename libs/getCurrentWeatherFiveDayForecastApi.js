@@ -19,6 +19,9 @@ class FetchCurrentWeatherForecastApiData {
                             try {
                                 let currentweatherdetails = new currentFiveDayWeatherForecastModel(arrayForWeatherFiveDayForecast[i]);
                                 WeatherArray.push(currentweatherdetails);
+                                for (const key in WeatherArray) {
+                                    console.log(WeatherArray[key]);
+                                }
                             } catch (e) {}
                             //take parameter back to promise chain
                             resolve(WeatherArray);

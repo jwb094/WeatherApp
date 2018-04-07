@@ -1,14 +1,14 @@
 {
-    "name": "weatherapp",
-    "version": "1.0.0",
-    "description": "",
-    "main": "app.js",
-    "scripts": {
-        "test": "echo \"Error: no test specified\" && exit 1"
-    },
-    "author": "Josh Bello",
-    "license": "ISC",
-    "dependencies": {
-
-    }
+  "name": "weatherapp",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Josh Bello",
+  "license": "ISC",
+  "dependencies": {
+    "moment": "^2.22.0"
+  }
 }

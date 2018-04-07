@@ -1,6 +1,20 @@
 class currentFiveDayWeatherForecastModel {
 
     constructor(obj) {
+        if (!obj.dt_txt) {
+            throw new Error("Info doesn't have current weather wind reading");
+        } else {
+            this.date = obj.dt_txt.substr(0, 10);
+            //  console.log(this.timeanddate);
+        }
+
+        if (!obj.dt_txt) {
+            throw new Error("Info doesn't have current weather wind reading");
+        } else {
+            this.time = obj.dt_txt.substr(11, 18);
+            //  console.log(this.timeanddate);
+        }
+
         if (!obj.main.temp_min) {
             throw new Error("Info doesn't have current weather main reading");
         } else {
@@ -25,30 +39,18 @@ class currentFiveDayWeatherForecastModel {
         if (!obj.weather) {
             throw new Error("Info doesn't have current weather main reading");
         } else {
-            this.weather = obj.weather;
+            this.weather = obj.weather[0].description;
             // console.log(this.weather);
         }
 
-        /* if (!obj.weather) {
-             throw new Error("Info doesn't have current weather main reading");
-         } else {
-             this.weather = obj.weather;
+        if (!obj.weather) {
+            throw new Error("Info doesn't have current weather main reading");
+        } else {
+            this.weathericon = obj.weather[0].icon;
             // console.log(this.weather);
-    }*/
-
-        /*if (!obj.wind.speed) {
-            throw new Error("Info doesn't have current weather wind reading");
-        } else {
-            this.windspeed = obj.wind.speed;
-            // console.log(this.wind);
-        }*/
-
-        if (!obj.dt_txt) {
-            throw new Error("Info doesn't have current weather wind reading");
-        } else {
-            this.timeanddate = obj.dt_txt;
-            //  console.log(this.timeanddate);
         }
+
+
 
     }
 }
