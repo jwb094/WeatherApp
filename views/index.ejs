@@ -17,17 +17,17 @@
         <div class="collapse navbar-collapse" id="navbarsExampleDefault">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="/">TodaysForecast</a>
+                    <a class="nav-link" href="/">Today</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/forecast">Forecast</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="/map">Map</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/historical">Historical</a>
-                </li>
-                <li class="nav-item">
                     <a class="nav-link" href="/favourites">Favourites</a>
-                </li>
+                </li> -->
             </ul>
             <form class="form-inline my-2 my-lg-0">
                 <input class="form-control mr-sm-2" type="text" name="search" id="search" placeholder="Enter Location" aria-label="Search">
@@ -38,22 +38,15 @@
     <div class="clearfix"></div>
     <div class="container" id="weather">
 
-        <div class="current">
+        <div class="left-col">
+            <h1 id="Location"></h1>
+        </div>
+        <div class="right-col"></div>
+        <!-- <div class="current">
             <ul id="currentweatherdetails">
-                <!-- <h1 id="Location"></h1> -->
-            </ul>
-        </div>
-    </div>
-    <div class="container" id="forecast">
-        <!-- Content here -->
-        <div class="title"></div>
-        <div class="forecastdetails">
-            <div class="box1"></div>
-            <div class="box2"></div>
-            <div class="box3"></div>
-            <div class="box4"></div>
-            <div class="box5"></div>
-        </div>
+                <h1 id="Location"></h1> 
+        </ul>
+    </div> -->
     </div>
     <script src="js/jquery-3.1.1.min.js"></script>
     <script src="js/weatherApp.js"></script>

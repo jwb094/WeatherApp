@@ -7,22 +7,22 @@ class PageController {
         res.render("index")
     }
 
-    /**@method mapPage
-     * This function render the map page 
+    /**@method forecastPage
+     * This function render the forecast page 
      */
-    static mapPage(req, res) {
-        res.render("maps")
+    static forecastPage(req, res) {
+        res.render("forecast")
     }
 
-    /**@method historicalPage
-     * This function render the historical page 
+    /**@method mapPage
+     * This function render the favourites page 
      */
-    static historicalPage(req, res) {
-        res.render("historical")
+    static mapPage(req, res) {
+        res.render("map")
     }
 
     /**@method favPage
-     * This function render the favourites page 
+     * This function render the fav page 
      */
     static favPage(req, res) {
         res.render("favourites")

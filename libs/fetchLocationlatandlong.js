@@ -1,17 +1,15 @@
 let NodeGeocoder = require('node-geocoder');
 let options = {
     provider: 'google',
-
-
     httpAdapter: 'https', // Default
     apiKey: 'AIzaSyDZRarUfLgo6UKB8TR9lCcSHlg4ch5LJC0',
     formatter: null // 'gpx', 'string', ...
 };
 let geocoder = NodeGeocoder(options);
 
-class FetchData {
+class FetchlatandlongData {
 
-    static FetchCityAndCCData(hlocation) {
+    static FetchCityLatAndLongData(hlocation) {
 
         return new Promise(
             (resolve, reject) => {
@@ -19,9 +17,9 @@ class FetchData {
                 geocoder.geocode(hlocation)
                     .then(function(res) {
                         // console.log(res);
-                        let city = res[0].city;
-                        let countryCode = res[0].countryCode;
-                        resolve([city, countryCode]);
+                        let lat = res[0].latitude;
+                        let long = res[0].longitude;
+                        resolve([lat, long]);
                     })
                     .catch(function(err) {
                         reject(err);
@@ -30,4 +28,4 @@ class FetchData {
     }
 }
 
-module.exports = FetchData;
+module.exports = FetchlatandlongData;

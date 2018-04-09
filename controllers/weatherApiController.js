@@ -1,7 +1,8 @@
  const FetchCC = require("../libs/fetchLocationCountryCode");
  const Fetchcurrentweatherapi = require("../libs/getCurrentWeatherApi");
  const Fetchcurrentweatherfivedayforecastapi = require("../libs/getCurrentWeatherFiveDayForecastApi");
- //const Fetchhistroicalapi = require("../libs/getHistroicalApi");
+ const FetchHd = require("../libs/getHistroicalWeatherApi");
+ const FetchLatAndLong = require("../libs/fetchLocationlatandlong");
 
  let currentWeatherAndFiveDayForecast = [];
  let currentWeatherApiResult = [];
@@ -11,7 +12,7 @@
 
 
      /**
-      * this function get 
+      * this function get current weather and bnext five day forecast of desired location
       * @method search
       * @param {String} req - req.body.name string
       * @param {String} res -  string
@@ -19,41 +20,72 @@
       */
 
      static getCurrentWeatherAndForecast(req, res) {
-         //result = [lat,long] - from node.Geocoder
-         //returns result and pass as arguements in next function
          FetchCC.FetchCityAndCCData(req.body.location)
              .then(result => {
-                 CityAndCode = result;
+                 // CityAndCode = result;
                  return Fetchcurrentweatherapi.getCurrentWeather(result)
              })
              .then(result => {
-                 currentWeatherAndFiveDayForecast.push(result);
-                 return Fetchcurrentweatherfivedayforecastapi.getCurrentWeatherFiveDayForecastApi(CityAndCode)
-             })
-             .then(result => {
-                 currentWeatherAndFiveDayForecast.push(result);
+                 //console.log(result);
                  res.status(200).send({
-                     result: currentWeatherAndFiveDayForecast
+                     result: result
                  })
              })
              .catch(err => {
                  res.status(400).send(err);
              })
+
      }
 
      /**
-      * this function get 
+      * this function get historical data of desired location
       * @method search
       * @param {String} req - req.body.name string
       * @param {String} res -  string
       * @return {Promise} return JSON Object OF
       */
      static getHistoricalInfo(req, res) {
-         //FetchHd.fetchHistoricalData(req.body.location)
+         FetchLatAndLong.FetchCityLatAndLongData(req.body.hlocation)
+             .then(result => {
+                 FetchHd.fetchHistoricalWeatherData(result)
+             })
+             .then(result => {
+                 //console.log('fetchHistoricalWeatherData ' + result);
+                 res.status(200).send({
+                         result: result
+                     })
+                     .catch(err => {
+                         res.status(400).send(err);
+                     })
+
+                 //  FetchHd.fetchHistoricalWeatherData(result)
+                 //      .then(result => {
+                 //          res.status(200).send({
+                 //                  result: result
+                 //              })
+                 //              .catch(err => {
+                 //                  res.status(400).send(err);
+                 //              })
+                 //      })
+             })
      }
 
-     /*static get(req, res) { 
-     }*/
+     /**
+      * this function get next five day forecast of desired location
+      * @method search
+      * @param {String} req - req.body.name string
+      * @param {String} res -  string
+      * @return {Promise} return JSON Object OF
+      */
+     /*  .then(result => {
+                           currentWeatherAndFiveDayForecast.push(result);
+                           return Fetchcurrentweatherfivedayforecastapi.getCurrentWeatherFiveDayForecastApi(CityAndCode)
+                       })
+                       .then(result => {
+                           currentWeatherAndFiveDayForecast.push(result);
+                           res.status(200).send({
+                               result: currentWeatherAndFiveDayForecast
+                           })
+                       })*/
  }
-
- module.exports = WeatherApiController;;
+ module.exports = WeatherApiController;

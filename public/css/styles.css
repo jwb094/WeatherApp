@@ -15,37 +15,50 @@ body {
     height: 10%;
 }
 
-#weather,
-#forecast {
-    height: 400px;
+#weather {
+    padding: 50px;
+    height: auto;
     width: auto;
     /* border: 2px solid black; */
+}
+
+.left-col,
+.right-col {
+    height: 400px;
+    width: 50%;
+    border: 2px solid white;
+    float: left;
+    text-align: center;
 }
 
 #Location {
     text-align: center;
 }
 
-#currentweatherdetails {
+
+/* #currentweatherdetails {
     text-align: center;
     list-style-type: none;
     font-size: 10px;
-}
+} */
 
-.title {
+
+/* .title {
     text-align: center;
-}
+} */
 
-.forecastdetails {
+
+/* .forecastdetails {
     display: flex;
     text-align: center;
-}
+} */
 
-.box1,
+
+/* .box1,
 .box2,
 .box3,
 .box4,
 .box5 {
     width: 300px;
     height: auto;
-}
+} */
