@@ -1,11 +1,11 @@
 const rest = require('restler');
 const currentWeatherModel = require("../models/currentWeatherForecastModel");
 
-//const api = process.env.WEATHER_API_KEY;
+
 class FetchCurrentWeatherApiData {
 
     static getCurrentWeather(result) {
-        //console.log(api);
+
         return new Promise(
             (resolve, reject) => {
                 //Calls the Api
@@ -18,7 +18,6 @@ class FetchCurrentWeatherApiData {
                         try {
                             let currentweatherdetails = new currentWeatherModel(weatherResult);
                             WeatherArray.push(currentweatherdetails);
-                            console.log(WeatherArray);
                         } catch (e) {}
                         resolve(WeatherArray);
                     }

@@ -10,5 +10,5 @@ const weatherApiCallsController = require('../controllers/weatherApiController')
 router.post("/weather/:location", weatherApiCallsController.getCurrentWeather)
 
 // call method weatherApiCallsController.getforecastInfo to get forecast
-router.post("/forecast/:flocation", weatherApiCallsController.getforecastInfo);
+router.post("/forecast/:flocation", weatherApiCallsController.getforecastWeather);
 module.exports = router;

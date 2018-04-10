@@ -1,15 +1,8 @@
  const FetchCC = require("../libs/fetchLocationCountryCode");
  const Fetchcurrentweatherapi = require("../libs/getCurrentWeatherApi");
- const Fetchcurrentweatherfivedayforecastapi = require("../libs/getCurrentWeatherFiveDayForecastApi");
- const FetchLatAndLong = require("../libs/fetchLocationlatandlong");
-
- let currentWeatherAndFiveDayForecast = [];
- let currentWeatherApiResult = [];
- let CityAndCode;
+ const Fetchcurrentweatherfivedayforecastapi = require("../libs/getFiveDayForecastApi");
 
  class WeatherApiController {
-
-
      /**
       * this function get current weather and bnext five day forecast of desired location
       * @method search
@@ -21,11 +14,9 @@
      static getCurrentWeather(req, res) {
          FetchCC.FetchCityAndCCData(req.body.location)
              .then(result => {
-                 // CityAndCode = result;
                  return Fetchcurrentweatherapi.getCurrentWeather(result)
              })
              .then(result => {
-                 //console.log(result);
                  res.status(200).send({
                      result: result
                  })
@@ -33,7 +24,6 @@
              .catch(err => {
                  res.status(400).send(err);
              })
-
      }
 
      /**
@@ -44,15 +34,17 @@
       * @return {Promise} return JSON Object OF
       */
      static getforecastWeather(req, res) {
-         FetchLatAndLong.FetchCityLatAndLongData(req.body.flocation)
+         FetchCC.FetchCityAndCCData(req.body.flocation)
              .then(result => {
-                 //currentWeatherAndFiveDayForecast.push(result);
-                 return Fetchcurrentweatherfivedayforecastapi.getCurrentWeatherFiveDayForecastApi(result)
+                 return Fetchcurrentweatherfivedayforecastapi.getFiveDayForecastApi(result)
              })
              .then(result => {
                  res.status(200).send({
                      result: result
                  })
+             })
+             .catch(err => {
+                 res.status(400).send(err);
              })
      }
  }

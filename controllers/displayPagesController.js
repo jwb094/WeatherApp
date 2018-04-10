@@ -20,13 +20,6 @@ class PageController {
     static mapPage(req, res) {
         res.render("map")
     }
-
-    /**@method favPage
-     * This function render the fav page 
-     */
-    static favPage(req, res) {
-        res.render("favourites")
-    }
 }
 
 module.exports = PageController;

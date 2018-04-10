@@ -2,16 +2,16 @@ class currentFiveDayWeatherForecastModel {
 
     constructor(obj) {
         if (!obj.dt_txt) {
-            throw new Error("Info doesn't have current weather wind reading");
+            throw new Error("Info doesn't have current weather date reading");
         } else {
             this.date = obj.dt_txt.substr(0, 10);
             //  console.log(this.timeanddate);
         }
 
         if (!obj.dt_txt) {
-            throw new Error("Info doesn't have current weather wind reading");
+            throw new Error("Info doesn't have current weather time reading");
         } else {
-            this.time = obj.dt_txt.substr(11, 18);
+            this.time = obj.dt_txt.substr(11, 16);
             //  console.log(this.timeanddate);
         }
 
@@ -49,9 +49,6 @@ class currentFiveDayWeatherForecastModel {
             this.weathericon = obj.weather[0].icon;
             // console.log(this.weather);
         }
-
-
-
     }
 }
 

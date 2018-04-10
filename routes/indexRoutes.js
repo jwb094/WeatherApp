@@ -2,22 +2,20 @@ const express = require("express");
 const router = express.Router();
 
 
-const homePageController = require('../controllers/displayIndexPageController');
+const pagesController = require('../controllers/displayPagesController');
 
 /* DISPLAY PAGES CALLS */
 
 //home(current weather) page 
 router.route("/")
-    .get(homePageController.homePage);
+    .get(pagesController.homePage);
 //forecast page 
 router.route("/forecast")
-    .get(homePageController.forecastPage);
+    .get(pagesController.forecastPage);
 //map page 
 router.route("/map")
-    .get(homePageController.mapPage);
-//favourites page 
-router.route("/favourites")
-    .get(homePageController.favPage);
+    .get(pagesController.mapPage);
+
 
 
 
