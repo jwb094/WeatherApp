@@ -3,10 +3,10 @@ $(() => {
         e.preventDefault();
         let location = $('#search').val();
         $.ajax({
-                url: `/weather/${location}`,
+                url: `/forecast/${flocation}`,
                 method: 'POST',
                 data: {
-                    location: $('#search').val()
+                    flocation: $('#search').val()
                 }
             })
             .then((data) => {

@@ -13,9 +13,6 @@ $(() => {
                 console.log(data);
                 let currentweather = data.result[0];
                 console.log(currentweather);
-                //let sunrises = currentweather.sunrise;
-                //let test = sunrises.toISOString();
-                //console.log(test);
                 //Current Weather Info
                 $("#Location").append(`<h1> ${location}</h1>`);
                 $(".left-col").append(`<h3><img src="http://openweathermap.org/img/w/${currentweather.weathericon}.png"></h3>`);
