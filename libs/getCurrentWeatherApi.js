@@ -1,6 +1,6 @@
 const rest = require('restler');
 const currentWeatherModel = require("../models/currentWeatherForecastModel");
-
+const apiKey = process.env.WEATHER_API_KEY;
 
 class FetchCurrentWeatherApiData {
 
@@ -9,7 +9,7 @@ class FetchCurrentWeatherApiData {
         return new Promise(
             (resolve, reject) => {
                 //Calls the Api
-                rest.get(`http://api.openweathermap.org/data/2.5/weather?q=${result[0]},${result[1]}&APPID=7e3951b4f189a6c133b64aaf9abf7728&units=metric`).on('complete', function(weatherResult) {
+                rest.get(`http://api.openweathermap.org/data/2.5/weather?q=${result[0]},${result[1]}&APPID=${apiKey}&units=metric`).on('complete', function(weatherResult) {
 
                     if (weatherResult instanceof Error) {
                         reject(weatherResult);
